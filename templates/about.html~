@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="IT 程序猿 cY的狗窝" content="" />
+<meta name="cY's doghouse" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>cY的博客</title>
+<link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Coda:400,800" rel="stylesheet" type="text/css" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<div id="menu-wrapper">
+	<div id="menu">
+		<ul>
+			<li><a href="/index">主页</a></li>
+			<li class="current_page_item"><a href="/about">关于</a></li>
+		</ul>
+	</div>
+	<!-- end #menu --> 
+</div>
+<div id="header-wrapper">
+	<div id="header">
+		<div id="logo">
+			<h1><a href="index.html">cY's DogHouse</a></h1>
+			<p>cY的博客</p>
+		</div>
+	</div>
+</div>
+<!-- end #header -->
+<div id="banner"><img src="/css/images/pics02.jpg" width="1000" height="200" alt="" /></div>
+<div id="wrapper">
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+                <div id="content">
+					<div class="post">
+                        <h2 class="title">关于</h2>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+                            <p>这是2B伪程序猿cY写来玩的一个Blog 想知道详细情况就去cY的人人或者微薄找这个死胖子</p>
+						</div>
+                    </div>
+                <div style="clear:both;">&nbsp;</div>
+				</div>
+				<!-- end #content -->
+				<div id="sidebar">
+					<ul>
+						<li>
+							<div id="search" >
+								<form method="get" action="#">
+									<div>
+										<input type="text" name="s" id="search-text" value="" />
+										<input type="submit" id="search-submit" value="搜索" />
+									</div>
+								</form>
+							</div>
+							<div style="clear: both;">&nbsp;</div>
+						</li>
+						<li>
+							<h2>cY是谁？</h2>
+							<p>喜欢打Dota 爱用蓝猫 爱风骚 更爱python 还在摸门槛的伪程序猿就是在下了！</p>
+						</li>
+						<li>
+							<h2>最近文章</h2>
+                            <ul>
+                                {% for b_list in b_list %}
+                                <li><a href="/{{ b_list.id }}">{{ b_list.title }}</a></li>
+                                {% endfor %}
+							</ul>
+						</li>
+						<li>
+							<h2>文章归档</h2>
+                            <ul>
+                                {% for d in d_list %}
+                                <li><a href="/time/{{d}}">{{ d }}</a></li>
+                                {% endfor %}
+							</ul>
+						</li>
+						<li>
+							<h2>分类标签</h2>
+                            <ul>
+                                {% for c in c_list %}
+                                <li><a href="/tag/{{ c }}">{{ c }}</a></li>
+                                {% endfor %}
+							</ul>
+                        </li>
+                        <li>
+                            <h2>友情链接</h2>
+                            <ul>
+                                <li><a href="http://www.renren.com/282941436">cY的人人</a></li>
+                                <li><a href="http://weibo.com/u/1748241252">cY的微博</a></li>
+                                <li><a href="http://aisk.me">海绵师傅的博客</a></li>
+                            </ul>
+                        </li>
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page --> 
+</div>
+<div id="footer">
+    <p>还是自己靠的住</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+from django.db import models
+
+# Create your models here.
+class Articles(models.Model):
+    title = models.CharField(max_length=30)
+    text = models.TextField()
+    tag = models.CharField(max_length=30)
+    dt = models.DateTimeField()
+    cdt = models.IntegerField()
+    deleted = models.BooleanField()
+    cn = models.IntegerField()
+
+
+    def __unicode__(self):
+        return self.title
+
+
+    class Meta:
+        ordering = ['-id']
+
+class Comments(models.Model):
+    articles = models.ForeignKey(Articles)
+    name = models.CharField(max_length=20)
+    dt = models.DateTimeField()
+    email = models.EmailField()
+    text = models.TextField()
+    deleted = models.BooleanField()
+
+
+    def __unicode__(self):
+        return self.title
+
+
+    class Meta:
+        ordering = ['-id']
