@@ -40,7 +40,7 @@
 						<div style="clear: both;">&nbsp;</div>
 						<div class="entry">
                             <p>{{ list.text|safe }}</p>
-                            <p class="links"><a href="/index">返回主页</a></p>
+                            <p class="links"><a href="/index/">返回主页</a></p>
                         </div>
                         <h1 id="cot">评论：</h1>
                         {% if not e_list %}
@@ -95,7 +95,7 @@
 							<h2>最近文章</h2>
                             <ul>
                                 {% for b_list in b_list %}
-                                <li><a href="/{{ b_list.id }}">{{ b_list.title }}</a></li>
+                                <li><a href="/{{ b_list.id }}/">{{ b_list.title }}</a></li>
                                 {% endfor %}
 							</ul>
 						</li>
@@ -103,7 +103,7 @@
 							<h2>文章归档</h2>
 							<ul>
 								{% for d in d_list %}
-                                				<li><a href="/time/{{d}}">{{ d }}</a></li>
+                                				<li><a href="/time/{{d}}/">{{ d }}</a></li>
                                 				{% endfor %}
 							</ul>
 						</li>
@@ -111,7 +111,7 @@
 							<h2>分类标签</h2>
                             <ul>
                                 {% for c_list in c_list %}
-                                <li><a href="/tag/{{ c_list }}">{{ c_list }}</a></li>
+                                <li><a href="/tag/{{ c_list }}/">{{ c_list }}</a></li>
                                 {% endfor %}
 							</ul>
                         </li>

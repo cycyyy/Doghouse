@@ -41,12 +41,12 @@
                     {% if a_list %}
                     {% for list in a_list %}
 					<div class="post">
-                        <h2 class="title"><a href="/{{ list.id }}">{{list.title}}</a></h2>
+                        <h2 class="title"><a href="/{{ list.id }}/">{{list.title}}</a></h2>
                         <p class="meta"><span class="date">{{ list.dt }}</span><span class="posted">{{ list.tag }}</span></p>
 						<div style="clear: both;">&nbsp;</div>
 						<div class="entry">
                             <p>{{ list.text|safe }}</p>
-                            <p class="links"><a href="/{{ list.id }}">继续阅读</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="/{{ list.id }}">评论({{ list.cn }})</a></p>
+                            <p class="links"><a href="/{{ list.id }}/">继续阅读</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="/{{ list.id }}/">评论({{ list.cn }})</a></p>
 						</div>
                     </div>
                     {% endfor %}
@@ -77,7 +77,7 @@
 							<h2>最近文章</h2>
                             <ul>
                                 {% for b_list in b_list %}
-                                <li><a href="/{{ b_list.id }}">{{ b_list.title }}</a></li>
+                                <li><a href="/{{ b_list.id }}/">{{ b_list.title }}</a></li>
                                 {% endfor %}
 							</ul>
 						</li>
@@ -85,7 +85,7 @@
 							<h2>文章归档</h2>
                             <ul>
                                 {% for d in d_list %}
-                                <li><a href="/time/{{d}}">{{ d }}</a></li>
+                                <li><a href="/time/{{d}}/">{{ d }}</a></li>
                                 {% endfor %}
 							</ul>
 						</li>
@@ -93,7 +93,7 @@
 							<h2>分类标签</h2>
                             <ul>
                                 {% for c in c_list %}
-                                <li><a href="/tag/{{ c }}">{{ c }}</a></li>
+                                <li><a href="/tag/{{ c }}/">{{ c }}</a></li>
                                 {% endfor %}
 							</ul>
                         </li>
