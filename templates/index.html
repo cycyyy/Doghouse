@@ -45,8 +45,8 @@
                         <p class="meta"><span class="date">{{ list.dt }}</span><span class="posted">{{ list.tag }}</span></p>
 						<div style="clear: both;">&nbsp;</div>
 						<div class="entry">
-                            <p>{{ list.text }}</p>
-                            <p class="links"><a href="/{{ list.id }}">继续阅读</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ list.id }}">评论({{ list.cn }})</a></p>
+                            <p>{{ list.text|safe }}</p>
+                            <p class="links"><a href="/{{ list.id }}">继续阅读</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="/{{ list.id }}">评论({{ list.cn }})</a></p>
 						</div>
                     </div>
                     {% endfor %}

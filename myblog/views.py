@@ -2,6 +2,7 @@
 from models import Articles,Comments
 from django.shortcuts import render_to_response
 from datetime import *
+from markdown import markdown
 #from django.template import Template,Context
 #from django.template.loader import get_template
 
@@ -20,6 +21,8 @@ def index(request):
     for k in a_list:
         d_list.append(k.cdt)
     d_list = list(set(d_list))
+    for z in a_list:
+        z.text=markdown(z.text)
     #fp = open('index.html')
     #t = get_template('index.html')
     #fp.close()
@@ -43,6 +46,7 @@ def articles(request,p_id):
         d_list.append(k.cdt)
     d_list = list(set(d_list))
     p = Articles.objects.get(id = p_id)
+    p.text = markdown(p.text)
     e_list = Comments.objects.filter(articles = p)
     errors = []
     if request.method == 'POST':
@@ -79,6 +83,8 @@ def tag(request,p_tag):
         d_list.append(k.cdt)
     d_list = list(set(d_list))
     e_list = Articles.objects.filter(deleted = False,tag = p_tag)
+    for z in e_list:
+        z.text = markdown(z.text)
     #fp = open('index.html')
     #t = get_template('index.html')
     #fp.close()
@@ -102,6 +108,8 @@ def cdt(request,p_cdt):
         d_list.append(k.cdt)
     d_list = list(set(d_list))
     e_list = Articles.objects.filter(deleted = False,cdt = p_cdt)
+    for z in e_list:
+        z.text = markdown(z.text)
     #fp = open('index.html')
     #t = get_template('index.html')
     #fp.close()

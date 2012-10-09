@@ -39,7 +39,7 @@
                         <p class="meta"><span class="date">{{ list.dt }}</span><span class="posted">{{ list.tag }}</span></p>
 						<div style="clear: both;">&nbsp;</div>
 						<div class="entry">
-                            <p>{{ list.text }}</p>
+                            <p>{{ list.text|safe }}</p>
                             <p class="links"><a href="/index">返回主页</a></p>
                         </div>
                         <h1 id="cot">评论：</h1>
