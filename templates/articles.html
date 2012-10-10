@@ -49,7 +49,7 @@
                         {% endif %}
                         {% for e in e_list%}
                         <p class="meta"><span class="date">{{ e.dt }}</span><span class="posted">by {{ e.name }}</span></p>
-                        <p class="comt">{{ e.text }}</p>
+                        <p class="comt">{{ e.text|safe }}</p>
                         {% endfor %}
                         </br></br></br></br></br>
                         <h1 id="cot">发表评论</h1>

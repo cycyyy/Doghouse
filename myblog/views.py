@@ -3,6 +3,7 @@ from models import Articles,Comments
 from django.shortcuts import render_to_response
 from datetime import *
 from markdown import markdown
+from cgi import escape
 #from django.template import Template,Context
 #from django.template.loader import get_template
 
@@ -48,6 +49,8 @@ def articles(request,p_id):
     p = Articles.objects.get(id = p_id)
     p.text = markdown(p.text)
     e_list = Comments.objects.filter(articles = p)
+    for k in e_list:
+        k.text = k.text.replace('\n','</br>')
     errors = []
     if request.method == 'POST':
         if not request.POST.get('author',''):
@@ -57,7 +60,7 @@ def articles(request,p_id):
         if not request.POST.get('comment',''):
             errors.append('Enter your comments!')
         if not errors:
-            new = Comments(articles = p,name = request.POST['author'],dt=datetime.now(),email = request.POST['email'],text=request.POST['comment'],deleted = False)
+            new = Comments(articles = p,name = request.POST['author'],dt=datetime.now(),email = request.POST['email'],text=escape(request.POST['comment']),deleted = False)
             new.save()
             p.cn = p.cn+1
             p.save()
