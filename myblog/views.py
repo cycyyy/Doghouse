@@ -7,7 +7,7 @@ from cgi import escape
 #from django.template import Template,Context
 #from django.template.loader import get_template
 
-def index(request):
+def index(request,page=1):
     a_list = Articles.objects.filter(deleted = False)
     count = len(a_list)
     if count > 5:
@@ -24,12 +24,25 @@ def index(request):
     d_list = list(set(d_list))
     for z in a_list:
         z.text=markdown(z.text)
+    r = 0
+    r = r + (int(page)-1)*10
+    p_list = []
+    if len(a_list) > 10:
+        if r+10 < len(a_list):
+            for k in xrange(r,r+10):
+                p_list.append(a_list[k])
+        else:
+            for k in xrange(r,len(a_list)):
+                p_list.append(a_list[k])
+    else:
+        p_list = a_list
     #fp = open('index.html')
     #t = get_template('index.html')
     #fp.close()
     #html = t.render(Context({'a_list':a_list}))
     #return HttpResponse(html)
-    return render_to_response('index.html',{'a_list':a_list,'b_list':b_list,'c_list':c_list,'d_list':d_list,'title':True})
+    pa = len(a_list)/10
+    return render_to_response('index.html',{'a_list':p_list,'b_list':b_list,'c_list':c_list,'d_list':d_list,'title':True,'f_list':range(1,pa+2),'type':'index'})
 
 def articles(request,p_id):
     a_list = Articles.objects.filter(deleted = False)
@@ -70,7 +83,7 @@ def articles(request,p_id):
     else:
         return render_to_response('articles.html',{'list':p,'b_list':b_list,'c_list':c_list,'d_list':d_list,'e_list':e_list})
 
-def tag(request,p_tag):
+def tag(request,p_tag,page=1):
     a_list = Articles.objects.filter(deleted = False)
     count = len(a_list)
     if count > 5:
@@ -88,14 +101,28 @@ def tag(request,p_tag):
     e_list = Articles.objects.filter(deleted = False,tag = p_tag)
     for z in e_list:
         z.text = markdown(z.text)
+    r = 0
+    r = r + (int(page)-1)*10
+    p_list = []
+    if len(e_list) > 10:
+        if r+10 < len(e_list):
+            for k in xrange(r,r+10):
+               p_list.append(e_list[k])
+        else:
+            for k in xrange(r,len(e_list)):
+                p_list.append(e_list[k])
+    else:
+        p_list = e_list
     #fp = open('index.html')
     #t = get_template('index.html')
     #fp.close()
     #html = t.render(Context({'a_list':a_list}))
     #return HttpResponse(html)
-    return render_to_response('index.html',{'a_list':e_list,'b_list':b_list,'c_list':c_list,'d_list':d_list,'title':False})
+    pa = len(e_list)/10
+    t = 'tag/'+p_tag
+    return render_to_response('index.html',{'a_list':p_list,'b_list':b_list,'c_list':c_list,'d_list':d_list,'f_list':range(1,pa+2),'title':False,'type':t})
 
-def cdt(request,p_cdt):
+def cdt(request,p_cdt,page=1):
     a_list = Articles.objects.filter(deleted = False)
     count = len(a_list)
     if count > 5:
@@ -113,12 +140,26 @@ def cdt(request,p_cdt):
     e_list = Articles.objects.filter(deleted = False,cdt = p_cdt)
     for z in e_list:
         z.text = markdown(z.text)
+    r = 0
+    r = r + (int(page)-1)*10
+    p_list = []
+    if len(e_list) > 10:
+        if r+10 < len(e_list):
+            for k in xrange(r,r+10):
+                p_list.append(e_list[k])
+        else:
+            for k in xrange(r,len(e_list)):
+                p_list.append(e_list[k])
+    else:
+        p_list = e_list
     #fp = open('index.html')
     #t = get_template('index.html')
     #fp.close()
     #html = t.render(Context({'a_list':a_list}))
     #return HttpResponse(html)
-    return render_to_response('index.html',{'a_list':e_list,'b_list':b_list,'c_list':c_list,'d_list':d_list,'title':False})
+    pa = len(e_list)/10
+    t = 'time/'+p_cdt
+    return render_to_response('index.html',{'a_list':p_list,'b_list':b_list,'c_list':c_list,'d_list':d_list,'f_list':range(1,pa+2),'title':False,'type':t})
 
 def about(request):
     a_list = Articles.objects.filter(deleted = False)

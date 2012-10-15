@@ -36,11 +36,15 @@
 <div id="wrapper">
 	<div id="page">
 		<div id="page-bgtop">
-			<div id="page-bgbtm">
-                <div id="content">
+            <div id="page-bgbtm">
+                <div id ="content">
+                    Page
+                    {% for k in f_list %}
+                    <a href="/{{ type }}/{{ k }}/">{{ k }}</a>.
+                    {% endfor %}
                     {% if a_list %}
-                    {% for list in a_list %}
-					<div class="post">
+                        {% for list in a_list %}
+					    <div class="post">
                         <h2 class="title"><a href="/{{ list.id }}/">{{list.title}}</a></h2>
                         <p class="meta"><span class="date">{{ list.dt }}</span><span class="posted">{{ list.tag }}</span></p>
 						<div style="clear: both;">&nbsp;</div>
