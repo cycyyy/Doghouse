@@ -42,6 +42,8 @@ def index(request,page=1):
     #html = t.render(Context({'a_list':a_list}))
     #return HttpResponse(html)
     pa = len(a_list)/10
+    if len(a_list)%10 == 0:
+        pa = pa-1
     return render_to_response('index.html',{'a_list':p_list,'b_list':b_list,'c_list':c_list,'d_list':d_list,'title':True,'f_list':range(1,pa+2),'type':'index'})
 
 def articles(request,p_id):
@@ -119,6 +121,8 @@ def tag(request,p_tag,page=1):
     #html = t.render(Context({'a_list':a_list}))
     #return HttpResponse(html)
     pa = len(e_list)/10
+    if len(e_list)%10 == 0:
+        pa = pa-1
     t = 'tag/'+p_tag
     return render_to_response('index.html',{'a_list':p_list,'b_list':b_list,'c_list':c_list,'d_list':d_list,'f_list':range(1,pa+2),'title':False,'type':t})
 
@@ -158,6 +162,8 @@ def cdt(request,p_cdt,page=1):
     #html = t.render(Context({'a_list':a_list}))
     #return HttpResponse(html)
     pa = len(e_list)/10
+    if len(e_list)%10 == 0:
+        pa = pa -1
     t = 'time/'+p_cdt
     return render_to_response('index.html',{'a_list':p_list,'b_list':b_list,'c_list':c_list,'d_list':d_list,'f_list':range(1,pa+2),'title':False,'type':t})
 
